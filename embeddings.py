@@ -92,7 +92,7 @@ embeddings =  custom_embedding_function(documents)
 embeddings = np.array(embeddings)
 print(len(embeddings))
 
-query = "What did Raskolnikov find?"
+query = "Ask any question related to the document provided?"
 query_embedding = custom_embedding_functionQ(query)
 query_embedding = np.array(query_embedding)
 
@@ -101,11 +101,11 @@ print(ids)
 
 # Connect to Pinecone
 PINECONE_API_KEY = "YOUR PINECODE API-KEY"
-PINECONE_ENV = "gcp-starter"
+PINECONE_ENV = "YOUR PINECONE ENVIRONMENT"
 pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_ENV)
 
 # Upsert embeddings into Pinecone index
-index_name = pinecone.Index("rag")
+index_name = pinecone.Index("PINECONE_INDEX_NAME")
 metadata = [{'chunks': doc.page_content} for doc in documents]
 
 print(len(metadata))
